@@ -8,16 +8,16 @@
 
 <form>
     <div class="form-group">
-        <input type="checkbox" id="Shares Cabin" name="cruise" value="true">
+        <input type="checkbox" id="Cabin" name="Cabin" value="true">
         <label for="Shares Cabin">Shares Cabin</label> </br>
     </div>
     <div class="form-group">
-        <input type="checkbox" id="Breakfast" name="cruise" value="true">
+        <input type="checkbox" id="Breakfast" name="Breakfast" value="true">
         <label for="Breakfast">Breakfast</label> </br>
     </div>
     <div class="form-group">
-        <input type="checkbox" id="Pool Pass" name="cruise" value="false">
-        <label for="Pool Pass">Pool Pass</label> </br>
+        <input type="checkbox" id="PoolPass" name="PoolPass" value="false">
+        <label for="PoolPass">Pool Pass</label> </br>
     </div>
     <input type="button" class="btn btn-success" value="Select a cruise" onclick="selectCruise()">
 </form>
@@ -35,6 +35,31 @@
     </div>
     <input type="button" class="btn btn-warning" value="Update the cruise" onclick="updateCruise()">
 </form>
-<p id="results" style="background-color:aquamarine;">click on update cruise to get result</p>
+<p id="resultS" style="background-color:aquamarine;">click on update cruise to get result</p>
+<script>
+    let my_cruise = {} 
+    function selectCruise() {
+        my_cruise={}
+        console.log("Getting input")
+        Cabin = document.getElementById("Cabin").checked
+        Breakfast = document.getElementById("Breakfast").checked
+        PoolPass = document.getElementById("PoolPass").checked
+        
+        my_cruise.isCabin = Cabin;
+        my_cruise.isBreakfast = Breakfast;
+        my_cruise.isPoolPass = PoolPass;
+       
+        document.getElementById("results").innerHTML=Object.values(my_cruise)
+    }
+    function updateCruise() {
+        let days = document.getElementById("days").value;
+        let price = parseFloat(document.getElementById("price").value)
+        my_cruise["days"] = days;
+        my_cruise["price"] = price;
+        
+        document.getElementById("resultS").innerHTML=Object.values(my_cruise)
+    }
+    
+    </script>
 </body>
 </html> 
