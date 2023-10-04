@@ -2,6 +2,11 @@
 <html>
     <head>
         <title>JavaScript</title>
+        <style>
+            body {
+              background-color: coral;
+            }
+        </style>
     </head>
 <body>
 <h1>Author entry Sai Swathi Thota</h1>
@@ -12,9 +17,9 @@
     <input type ="password" id="secret_string" name="secret_string" min=10 max=50 step=2 value=Dickens> <br>
     <label for="checkIt">Guess the author</label>
     <input type ="text" id="checkIt" name="checkIt" autofocus> <br>
-    <input type="button" onclick="checkAuthor()" value="Check the guess">
+    <input type="button" onclick="checkAuthor()"  style="background-color: pink" value="Check the guess"><br>
 </form>
-<p id="result">This text will be replaced </p>
+<p id="result" style="background-color:lightskyblue">This text will be replaced </p>
 <script> 
 let good=0
 let oops=0

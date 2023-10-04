@@ -2,85 +2,87 @@
 <html>
     <head>
         <title>Discounts</title>
+        <style>
+            body {
+              background-color: lightpink;
+            }
+        </style>
     </head>
 <body>
-<h1>Sai Swathi Thota shows tip amounts
-</h1>
+<h1>Sai Swathi Thota shows tip amounts</h1>
 <h2>Getting input</h2>
-<div class= "container">
-    <label for="baseAmount">Enter base amount </label>
-    <input type="number" id="baseAmount" name="baseAmount" value="50"><br><br>
-</div>
-<div class= "container">
-    <label for="discount">Enter the tip percent </label>
-    <input type="number" id="discount" name="discount" value="15"><br><br>
-</div>
-<button onclick="tips()">Show tip</button>
-<p id="result" style="background-color:palevioletred">This text will be replaced with base values</p>
-
-<div class = "container">
+<div class="container">
     <form>
-        <div class = "container">
-            <input type="radio" id="sum" name="operation" value="sum" onclick="chooseOp()">
-            <label for="sum">+</label><br>
+        <div class="form-group">
+            <label for="basevalue">Enter base amount </label>
+            <input type="number" id="basevalue" name="basevalue" value=50> <br>
         </div>
-        <div class = "container">
-            <input type="radio" id="difference" name="operation" value="difference" onclick=chooseOp()>
-            <label for="diff">/</label></br>
+        <div class="form-group">
+            <label for="discount">Enter the tip percent</label>
+            <input type="number" id="discount" name="discount" value=15> <br>
         </div>
-        <div class = "container">
-            <input type="radio" id="Mult" name="operation" value="product" onclick="chooseOp()">
-            <label for="Mult">*</label><br>
-        </div>
-        <p id="operation_Result" style="background-color:palevioletred">This text will be replaced with operation values</p>
+        <input type="button" class="btn btn-warning" onclick="tips()" value="Show tip" style="background-color: orange;">
     </form>
+
+    <p id="result" style="background-color:palevioletred">This text will be replaced with base values</p>
+
 </div>
+<script>
+    function tips() {
+        baseAmount = document.getElementById("basevalue").value
+        tip = Number(document.getElementById("discount").value)
+        let myOutput = ""
 
-
-<script> 
-
-function tips() {
-        const baseCount = parseFloat(document.getElementById('baseAmount').value);
-        const discount = parseFloat(document.getElementById('discount').value);
-            let myOutput="";
-            let toShow= "";
-
-            for (let i = 0; i < 5; i++) {
-                const tipLevel = discount + i * 4;
-                const calculatedTip = (baseCount * tipLevel) / 100;
-                toShow += `${tipLevel}% is ${calculatedTip.toFixed(1)}; `;
-            }
-
-            myOutput = `Tips are: ${toShow}`;
-
-            document.getElementById('result').textContent = myOutput;
+        for (let i = 0; i <= 16; i = i + 4) {
+            let tipAmount = tip + i;
+            let totalamount = baseAmount * tipAmount / 100;
+            myOutput =myOutput+tipAmount + "% is " + totalamount + "; "
         }
 
+        out = document.getElementById("result").innerHTML = "Tips are: " + myOutput;
+
+    }
+</script>
+<div class="container">
+    <form>
+        <div class="form-group">
+        <input type="radio" id="first" name="operation" onclick="chooseOp()" value="sum">
+        <label for="first">sum</label> <br>
+        </div>
+        <div class="form-group">
+        <input type="radio" id="second" name="operation" onclick="chooseOp()" value="difference">
+        <label for="second">diff</label> <br>
+        </div>
     
-function chooseOp() {
-        
-        const operation = document.querySelector('input[name="operation"]:checked').value;
-        
-        const baseA = parseFloat(document.getElementById('baseAmount').value);
-        const tipP = parseFloat(document.getElementById('tipPercent').value);
-        
-        let operationResults;
-
-        switch (operation) {
-		        case "sum":
-                    operationResults = 'Sum of ${baseA} and ${tipP} is ${baseA + tipP}';
-                    break;
-                case "difference":
-                    operationResults = 'Difference between ${baseA} and ${tipP} is ${baseA - tipP}';
-                    break;
-                case "product":
-                    operationResults = 'Product of ${baseA} and ${tipP} is ${baseA * tipP}';
-                    break;
-                default:
-                    operationResults = "Please select Either Sum or Difference or Multiplication";
-            }
-
-            document.getElementById('operation_Results').textContent = '${operationResults}';
+        <input type="radio" id="third" name="operation" onclick="chooseOp()" value="product">
+        <label for="third">mult</label> <br>
+    </form>
+    <p id="resultString" style="background-color:palevioletred">This text will be replaced with Tip values</p>
+</div>
+</div>
+<script> 
+    function chooseOp()
+    {
+       let base=document.getElementById("basevalue").value;
+       let conversion=document.getElementById("discount").value;
+       let sum=document.getElementById("first").checked;
+       let difference=document.getElementById("second").checked;
+       let product=document.getElementById("third").checked;
+       let operationresults=0;
+       if(sum)
+       {
+        operationresults=(parseInt(base)+parseInt(conversion)); 
+       }
+       else if(difference)
+       {
+        operationresults=(parseInt(base)-parseInt(conversion)); 
+       }
+       else if(product)
+       {
+        operationresults=(parseInt(base)*parseInt(conversion)); 
+       }
+       document.getElementById("resultString").innerHTML=operationresults
+    
     }
 </script>
 </body>
