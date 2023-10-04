@@ -33,7 +33,20 @@ function checkAuthor (){
         alert("Sorry")
     }
     out.innerHTML = "Correct guess:"+good+" Wrong answer:"+oops
-}
+    if (oops > 6 ) {
+            let authorbutton = document.getElementById('checkIt');
+            authorbutton.onclick = errorMsg ;
+        }
+        
+        document.getElementById("goodCounter").innerHTML = `Good count : ${good}`;
+        document.getElementById("oopsCounter").innerHTML = `Opps count : ${oops}`;
+        
+      
+    }
+    function errorMsg() {
+        alert("Sorry, ran out of guesses");
+    }
+
 </script>
 <div style="padding: 75px 75px"><img src="Texas.jpg" id="city" height="100px" width="100px" onclick=selectImage()></div>
 <script>
