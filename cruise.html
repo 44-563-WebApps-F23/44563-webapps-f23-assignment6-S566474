@@ -21,16 +21,20 @@
     </div>
     <input type="button" class="btn btn-success" value="Select a cruise" onclick="selectCruise()">
 </form>
-<p id="results" style="background-color:aquamarine;"></p>
+<p id="results" style="background-color:aquamarine;">click on select cruise to get result</p>
 <br>
 
 <form>
     <div class="form-group">
-        <label for="">
-
-        </label>
-
+        <label for="days">Enter the number of days</label>
+        <input type="text" class="form-control" id="days" name="days" value="days"> <br>
     </div>
+    <div class="form-group">
+        <label for="price">Enter price</label>
+        <input type="text" class="form-control" id="price" name="price"> <br>
+    </div>
+    <input type="button" class="btn btn-warning" value="Update the cruise" onclick="updateCruise()">
 </form>
+<p id="results" style="background-color:aquamarine;">click on update cruise to get result</p>
 </body>
 </html> 
